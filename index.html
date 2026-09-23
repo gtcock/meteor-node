@@ -1,302 +1,597 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的导航页</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('http://files.unn.pp.ua/download/pictures%2Fbackground.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        
-        .header {
-            color: #fff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-        
-        .search-container {
-            padding: 3rem;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 20px;
-        }
-        
-        .search-box {
-            width: 100%;
-            padding: 15px 18px;
-            font-size: 20px;
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            outline: none;
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-        }
-        
-        .link-item {
-            background-color: rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 12px;
-            transition: all 0.2s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .link-item:hover {
-            background-color: rgba(255, 255, 255, 0.85);
-            transform: translateY(-2px);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-        }
-        
-        .link-item a {
-            text-decoration: none;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            justify-content: center;
-        }
-        
-        .link-icon {
-            width: 24px;
-            height: 24px;
-            margin-bottom: 8px;
-            object-fit: contain;
-        }
-        
-        .link-text {
-            font-size: 14px;
-            text-align: center;
-            word-break: break-word;
-            max-width: 100%;
-        }
-        .foot_marker {
-            position: fixed;
-            bottom: 10px;
-            left: 0;
-            right: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.8);
-            z-index: 999;
-            padding: 10px 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
-        }
+  <meta charset="UTF-8">
 
-        .foot_marker a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            padding: 5px 10px;
-            border-radius: 15px;
-        }
+  <title>圣诞树🎄</title>
 
-        .foot_marker a:hover {
-            color: #4388e0;
-        }        
-    </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #161616;
+      color: #c5a880;
+      font-family: sans-serif;
+    }
+
+    label {
+      display: inline-block;
+      background-color: #161616;
+      padding: 16px;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      width: 300px;
+      border-radius: 10px;
+      border: 1px solid #c5a880;
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .btn {
+      background-color: #161616;
+      border-radius: 10px;
+      color: #c5a880;
+      border: 1px solid #c5a880;
+      padding: 16px;
+      width: 300px;
+      margin-bottom: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    .separator {
+      font-weight: bold;
+      text-align: center;
+      width: 300px;
+      margin: 16px 0px;
+      color: #a07676;
+    }
+
+    .title {
+      color: #a07676;
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
+    }
+
+    .text-loading {
+      font-size: 2rem;
+    }
+  </style>
+
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+
+
+
+  <script>
+    if (document.location.search.match(/type=embed/gi)) {
+      window.parent.postMessage("resize", "*");
+    }
+  </script>
+
+
 </head>
-<body>
-    <div class="search-container">
-        <form action="https://www.google.com/search" method="get" target="_blank">
-            <input class="search-box" type="text" name="q" placeholder="Google 搜索...">
-        </form>
-    </div>
-    
-    <div class="container">
-        <!-- 第一行 -->
-        <div class="link-item">
-            <a href="https://www.google.com" target="_blank">
-                <img class="link-icon" src="https://www.google.com/favicon.ico" alt="Google">
-                <span class="link-text">Google</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.baidu.com" target="_blank">
-                <img class="link-icon" src="https://www.baidu.com/favicon.ico" alt="Baidu">
-                <span class="link-text">Baidu</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.youtube.com" target="_blank">
-                <img class="link-icon" src="https://www.youtube.com/favicon.ico" alt="YouTube">
-                <span class="link-text">Youtube</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://mail.google.com/mail/u/0/" target="_blank">
-                <img class="link-icon" src="https://mail.google.com/favicon.ico" alt="Gmail">
-                <span class="link-text">Gmail</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://github.com" target="_blank">
-                <img class="link-icon" src="https://github.com/favicon.ico" alt="GitHub">
-                <span class="link-text">GitHub</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ip.sb" target="_blank">
-                <img class="link-icon" src="https://ip.sb/favicon.ico" alt="IP SB">
-                <span class="link-text">ip.sb</span>
-            </a>
-        </div>
-        
-        <!-- 第二行 -->
-        <div class="link-item">
-            <a href="https://dash.cloudflare.com" target="_blank">
-                <img class="link-icon" src="https://www.cloudflare.com/favicon.ico" alt="Cloudflare">
-                <span class="link-text">Cloudflare</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://chat.openai.com" target="_blank">
-                <img class="link-icon" src="https://chat.openai.com/favicon.ico" alt="ChatGPT">
-                <span class="link-text">Chatgpt</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://huggingface.co" target="_blank">
-                <img class="link-icon" src="https://huggingface.co/favicon.ico" alt="Hugging Face">
-                <span class="link-text">Huggingface</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.itdog.cn" target="_blank">
-                <i class="fas fa-network-wired link-icon"></i>
-                <span class="link-text">ITDOG - 在线ping</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://ping0.cc" target="_blank">
-                <i class="fas fa-database link-icon"></i>
-                <span class="link-text">Ping0</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="#" target="_blank">
-                <i class="fas fa-fingerprint link-icon"></i>
-                <span class="link-text">浏览器指纹</span>
-            </a>
-        </div>
-        
-        <!-- 第三行 -->
-        <div class="link-item">
-            <a href="https://ssss.nyc.mn" target="_blank">
-                <i class="fas fa-tachometer-alt link-icon"></i>
-                <span class="link-text">nezha面板</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://hoppscotch.io" target="_blank">
-                <img class="link-icon" src="https://discord.com/favicon.ico" alt="Discord">
-                <span class="link-text">Api测试</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://who.cx" target="_blank">
-                <i class="fas fa-globe link-icon"></i>
-                <span class="link-text">who.cx</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://www.domcomp.com" target="_blank">
-                <i class="fas fa-tags link-icon"></i>
-                <span class="link-text">域名比价</span>
-            </a>
-        </div>
-        
-        <div class="link-item">
-            <a href="https://www.nodeseek.com" target="_blank">
-                <i class="fas fa-server link-icon"></i>
-                <span class="link-text">NodeSeek</span>
-            </a>
-        </div>
-        <div class="link-item">
-            <a href="https://linux.do" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">Linux do</span>
-            </a>
-        </div>
-        
-        <!-- 第四行 -->
-        <div class="link-item">
-            <a href="https://music.gvrander.eu.org" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">在线音乐</span>
-            </a>           
-        </div>
-        <div class="link-item">
-            <a href="https://www.freereceivesms.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">免费接码</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://sublink.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">订阅转换</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://ssh.eooce.com" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">webssh</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://filebox.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">文件快递柜</span>
-            </a> 
-        </div>
-        <div class="link-item">
-            <a href="https://address.nnuu.nyc.mn" target="_blank">
-                <i class="fab fa-linux link-icon"></i>
-                <span class="link-text">真实地址生成</span>
-            </a> 
-        </div>
 
-        <!-- 版权 -->
-        <div class="foot_marker">
-        <a href="https://github.com/eooce" target="_blank">Powered by eooce</a>
-    </div>
+<body translate="no">
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/EffectComposer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/RenderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/ShaderPass.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/shaders/CopyShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.115.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
 
-    <script>
-        document.querySelectorAll('.link-item:not(.empty)').forEach(item => {
-            const icon = item.querySelector('img.link-icon');
-            if (icon) {
-                icon.onerror = function() {
-                    this.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptMCAyYzQuNDE4IDAgOCAzLjU4MiA4IDhzLTMuNTgyIDgtOCA4LTgtMy41ODItOC04IDMuNTgyLTggOC04eiIgZmlsbD0iIzMzMyIvPjwvc3ZnPg==';
-                }
-            }
+  <div id="overlay">
+    <ul>
+      <li class="title">请选择音乐</li>
+      <li><button class="btn" id="btnA" type="button">Music1</button></li>
+      <li><button class="btn" id="btnB" type="button">Music2</button></li>
+      <li><button class="btn" id="btnC" type="button">Music3</button></li>
+      <li><button class="btn" id="btnD" type="button">Music4</button></li>
+      <li class="separator">或者</li>
+      <li>
+        <input type="file" id="upload" hidden />
+        <label for="upload">本地音乐</label>
+      </li>
+    </ul>
+  </div>
+
+  <script id="rendered-js">
+    const { PI, sin, cos } = Math;
+    const TAU = 2 * PI;
+
+    const map = (value, sMin, sMax, dMin, dMax) => {
+      return dMin + (value - sMin) / (sMax - sMin) * (dMax - dMin);
+    };
+
+    const range = (n, m = 0) =>
+      Array(n).
+        fill(m).
+        map((i, j) => i + j);
+
+    const rand = (max, min = 0) => min + Math.random() * (max - min);
+    const randInt = (max, min = 0) => Math.floor(min + Math.random() * (max - min));
+    const randChoise = arr => arr[randInt(arr.length)];
+    const polar = (ang, r = 1) => [r * cos(ang), r * sin(ang)];
+
+    let scene, camera, renderer, analyser;
+    let step = 0;
+    const uniforms = {
+      time: { type: "f", value: 0.0 },
+      step: { type: "f", value: 0.0 }
+    };
+
+    const params = {
+      exposure: 1,
+      bloomStrength: 0.9,
+      bloomThreshold: 0,
+      bloomRadius: 0.5
+    };
+
+    let composer;
+
+    const fftSize = 2048;
+    const totalPoints = 4000;
+
+    const listener = new THREE.AudioListener();
+
+    const audio = new THREE.Audio(listener);
+
+    document.querySelector("input").addEventListener("change", uploadAudio, false);
+
+    const buttons = document.querySelectorAll(".btn");
+    buttons.forEach((button, index) =>
+      button.addEventListener("click", () => loadAudio(index)));
+
+
+    function init() {
+      const overlay = document.getElementById("overlay");
+      overlay.remove();
+
+      scene = new THREE.Scene();
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        1,
+        1000);
+
+      camera.position.set(-0.09397456774197047, -2.5597086635726947, 24.420789670889008);
+      camera.rotation.set(0.10443543723052419, -0.003827152981119352, 0.0004011488708739715);
+
+      const format = renderer.capabilities.isWebGL2 ?
+        THREE.RedFormat :
+        THREE.LuminanceFormat;
+
+      uniforms.tAudioData = {
+        value: new THREE.DataTexture(analyser.data, fftSize / 2, 1, format)
+      };
+
+
+      addPlane(scene, uniforms, 3000);
+      addSnow(scene, uniforms);
+
+      range(10).map(i => {
+        addTree(scene, uniforms, totalPoints, [20, 0, -20 * i]);
+        addTree(scene, uniforms, totalPoints, [-20, 0, -20 * i]);
+      });
+
+      const renderScene = new THREE.RenderPass(scene, camera);
+
+      const bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        1.5,
+        0.4,
+        0.85);
+
+      bloomPass.threshold = params.bloomThreshold;
+      bloomPass.strength = params.bloomStrength;
+      bloomPass.radius = params.bloomRadius;
+
+      composer = new THREE.EffectComposer(renderer);
+      composer.addPass(renderScene);
+      composer.addPass(bloomPass);
+
+      addListners(camera, renderer, composer);
+      animate();
+    }
+
+    function animate(time) {
+      analyser.getFrequencyData();
+      uniforms.tAudioData.value.needsUpdate = true;
+      step = (step + 1) % 1000;
+      uniforms.time.value = time;
+      uniforms.step.value = step;
+      composer.render();
+      requestAnimationFrame(animate);
+    }
+
+    function loadAudio(i) {
+      document.getElementById("overlay").innerHTML =
+        '<div class="text-loading">惊喜即将来临！</div>';
+      const files = [
+        "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Simon_Panrucker/Happy_Christmas_You_Guys/Simon_Panrucker_-_01_-_Snowflakes_Falling_Down.mp3",
+        "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Dott/This_Christmas/Dott_-_01_-_This_Christmas.mp3",
+        "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/TRG_Banks/TRG_Banks_Christmas_Album/TRG_Banks_-_12_-_No_room_at_the_inn.mp3",
+        "https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Mark_Smeby/En_attendant_Nol/Mark_Smeby_-_07_-_Jingle_Bell_Swing.mp3"];
+
+      const file = files[i];
+
+      const loader = new THREE.AudioLoader();
+      loader.load(file, function (buffer) {
+        audio.setBuffer(buffer);
+        audio.play();
+        analyser = new THREE.AudioAnalyser(audio, fftSize);
+        init();
+      });
+
+
+
+
+    }
+
+
+    function uploadAudio(event) {
+      document.getElementById("overlay").innerHTML =
+        '<div class="text-loading">惊喜即将来临！...</div>';
+      const files = event.target.files;
+      const reader = new FileReader();
+
+      reader.onload = function (file) {
+        var arrayBuffer = file.target.result;
+
+        listener.context.decodeAudioData(arrayBuffer, function (audioBuffer) {
+          audio.setBuffer(audioBuffer);
+          audio.play();
+          analyser = new THREE.AudioAnalyser(audio, fftSize);
+          init();
         });
-    </script>
+      };
+
+      reader.readAsArrayBuffer(files[0]);
+    }
+
+    function addTree(scene, uniforms, totalPoints, treePosition) {
+      const vertexShader = `
+      attribute float mIndex;
+      varying vec3 vColor;
+      varying float opacity;
+      uniform sampler2D tAudioData;
+      float norm(float value, float min, float max ){
+       return (value - min) / (max - min);
+      }
+      float lerp(float norm, float min, float max){
+       return (max - min) * norm + min;
+      }
+      float map(float value, float sourceMin, float sourceMax, float destMin, float destMax){
+       return lerp(norm(value, sourceMin, sourceMax), destMin, destMax);
+      }
+      void main() {
+       vColor = color;
+       vec3 p = position;
+       vec4 mvPosition = modelViewMatrix * vec4( p, 1.0 );
+       float amplitude = texture2D( tAudioData, vec2( mIndex, 0.1 ) ).r;
+       float amplitudeClamped = clamp(amplitude-0.4,0.0, 0.6 );
+       float sizeMapped = map(amplitudeClamped, 0.0, 0.6, 1.0, 20.0);
+       opacity = map(mvPosition.z , -200.0, 15.0, 0.0, 1.0);
+       gl_PointSize = sizeMapped * ( 100.0 / -mvPosition.z );
+       gl_Position = projectionMatrix * mvPosition;
+      }
+      `;
+      const fragmentShader = `
+      varying vec3 vColor;
+      varying float opacity;
+      uniform sampler2D pointTexture;
+      void main() {
+       gl_FragColor = vec4( vColor, opacity );
+       gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord ); 
+      }
+      `;
+      const shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          ...uniforms,
+          pointTexture: {
+            value: new THREE.TextureLoader().load(`https://assets.codepen.io/3685267/spark1.png`)
+          }
+        },
+
+
+        vertexShader,
+        fragmentShader,
+        blending: THREE.AdditiveBlending,
+        depthTest: false,
+        transparent: true,
+        vertexColors: true
+      });
+
+
+      const geometry = new THREE.BufferGeometry();
+      const positions = [];
+      const colors = [];
+      const sizes = [];
+      const phases = [];
+      const mIndexs = [];
+
+      const color = new THREE.Color();
+
+      for (let i = 0; i < totalPoints; i++) {
+        const t = Math.random();
+        const y = map(t, 0, 1, -8, 10);
+        const ang = map(t, 0, 1, 0, 6 * TAU) + TAU / 2 * (i % 2);
+        const [z, x] = polar(ang, map(t, 0, 1, 5, 0));
+
+        const modifier = map(t, 0, 1, 1, 0);
+        positions.push(x + rand(-0.3 * modifier, 0.3 * modifier));
+        positions.push(y + rand(-0.3 * modifier, 0.3 * modifier));
+        positions.push(z + rand(-0.3 * modifier, 0.3 * modifier));
+
+        color.setHSL(map(i, 0, totalPoints, 1.0, 0.0), 1.0, 0.5);
+
+        colors.push(color.r, color.g, color.b);
+        phases.push(rand(1000));
+        sizes.push(1);
+        const mIndex = map(i, 0, totalPoints, 1.0, 0.0);
+        mIndexs.push(mIndex);
+      }
+
+      geometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(positions, 3).setUsage(
+          THREE.DynamicDrawUsage));
+
+
+      geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+      geometry.setAttribute("size", new THREE.Float32BufferAttribute(sizes, 1));
+      geometry.setAttribute("phase", new THREE.Float32BufferAttribute(phases, 1));
+      geometry.setAttribute("mIndex", new THREE.Float32BufferAttribute(mIndexs, 1));
+
+      const tree = new THREE.Points(geometry, shaderMaterial);
+
+      const [px, py, pz] = treePosition;
+
+      tree.position.x = px;
+      tree.position.y = py;
+      tree.position.z = pz;
+
+      scene.add(tree);
+    }
+
+    function addSnow(scene, uniforms) {
+      const vertexShader = `
+      attribute float size;
+      attribute float phase;
+      attribute float phaseSecondary;
+      varying vec3 vColor;
+      varying float opacity;
+      uniform float time;
+      uniform float step;
+      float norm(float value, float min, float max ){
+       return (value - min) / (max - min);
+      }
+      float lerp(float norm, float min, float max){
+       return (max - min) * norm + min;
+      }
+      float map(float value, float sourceMin, float sourceMax, float destMin, float destMax){
+       return lerp(norm(value, sourceMin, sourceMax), destMin, destMax);
+      }
+      void main() {
+       float t = time* 0.0006;
+       vColor = color;
+       vec3 p = position;
+       p.y = map(mod(phase+step, 1000.0), 0.0, 1000.0, 25.0, -8.0);
+       p.x += sin(t+phase);
+       p.z += sin(t+phaseSecondary);
+       opacity = map(p.z, -150.0, 15.0, 0.0, 1.0);
+       vec4 mvPosition = modelViewMatrix * vec4( p, 1.0 );
+       gl_PointSize = size * ( 100.0 / -mvPosition.z );
+       gl_Position = projectionMatrix * mvPosition;
+      }
+      `;
+
+      const fragmentShader = `
+      uniform sampler2D pointTexture;
+      varying vec3 vColor;
+      varying float opacity;
+      void main() {
+       gl_FragColor = vec4( vColor, opacity );
+       gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord ); 
+      }
+      `;
+      function createSnowSet(sprite) {
+        const totalPoints = 300;
+        const shaderMaterial = new THREE.ShaderMaterial({
+          uniforms: {
+            ...uniforms,
+            pointTexture: {
+              value: new THREE.TextureLoader().load(sprite)
+            }
+          },
+
+
+          vertexShader,
+          fragmentShader,
+          blending: THREE.AdditiveBlending,
+          depthTest: false,
+          transparent: true,
+          vertexColors: true
+        });
+
+
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+        const sizes = [];
+        const phases = [];
+        const phaseSecondaries = [];
+
+        const color = new THREE.Color();
+
+        for (let i = 0; i < totalPoints; i++) {
+          const [x, y, z] = [rand(25, -25), 0, rand(15, -150)];
+          positions.push(x);
+          positions.push(y);
+          positions.push(z);
+
+          color.set(randChoise(["#f1d4d4", "#f1f6f9", "#eeeeee", "#f1f1e8"]));
+
+          colors.push(color.r, color.g, color.b);
+          phases.push(rand(1000));
+          phaseSecondaries.push(rand(1000));
+          sizes.push(rand(4, 2));
+        }
+
+        geometry.setAttribute(
+          "position",
+          new THREE.Float32BufferAttribute(positions, 3));
+
+        geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+        geometry.setAttribute("size", new THREE.Float32BufferAttribute(sizes, 1));
+        geometry.setAttribute("phase", new THREE.Float32BufferAttribute(phases, 1));
+        geometry.setAttribute(
+          "phaseSecondary",
+          new THREE.Float32BufferAttribute(phaseSecondaries, 1));
+
+
+        const mesh = new THREE.Points(geometry, shaderMaterial);
+
+        scene.add(mesh);
+      }
+      const sprites = [
+        "https://assets.codepen.io/3685267/snowflake1.png",
+        "https://assets.codepen.io/3685267/snowflake2.png",
+        "https://assets.codepen.io/3685267/snowflake3.png",
+        "https://assets.codepen.io/3685267/snowflake4.png",
+        "https://assets.codepen.io/3685267/snowflake5.png"];
+
+      sprites.forEach(sprite => {
+        createSnowSet(sprite);
+      });
+    }
+
+    function addPlane(scene, uniforms, totalPoints) {
+      const vertexShader = `
+      attribute float size;
+      attribute vec3 customColor;
+      varying vec3 vColor;
+      void main() {
+       vColor = customColor;
+       vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+       gl_PointSize = size * ( 300.0 / -mvPosition.z );
+       gl_Position = projectionMatrix * mvPosition;
+      }
+      `;
+      const fragmentShader = `
+      uniform vec3 color;
+      uniform sampler2D pointTexture;
+      varying vec3 vColor;
+      void main() {
+       gl_FragColor = vec4( vColor, 1.0 );
+       gl_FragColor = gl_FragColor * texture2D( pointTexture, gl_PointCoord );
+      }
+      `;
+      const shaderMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          ...uniforms,
+          pointTexture: {
+            value: new THREE.TextureLoader().load(`https://assets.codepen.io/3685267/spark1.png`)
+          }
+        },
+
+
+        vertexShader,
+        fragmentShader,
+        blending: THREE.AdditiveBlending,
+        depthTest: false,
+        transparent: true,
+        vertexColors: true
+      });
+
+
+      const geometry = new THREE.BufferGeometry();
+      const positions = [];
+      const colors = [];
+      const sizes = [];
+
+      const color = new THREE.Color();
+
+      for (let i = 0; i < totalPoints; i++) {
+        const [x, y, z] = [rand(-25, 25), 0, rand(-150, 15)];
+        positions.push(x);
+        positions.push(y);
+        positions.push(z);
+
+        color.set(randChoise(["#93abd3", "#f2f4c0", "#9ddfd3"]));
+
+        colors.push(color.r, color.g, color.b);
+        sizes.push(1);
+      }
+
+      geometry.setAttribute(
+        "position",
+        new THREE.Float32BufferAttribute(positions, 3).setUsage(
+          THREE.DynamicDrawUsage));
+
+
+      geometry.setAttribute(
+        "customColor",
+        new THREE.Float32BufferAttribute(colors, 3));
+
+      geometry.setAttribute("size", new THREE.Float32BufferAttribute(sizes, 1));
+
+      const plane = new THREE.Points(geometry, shaderMaterial);
+
+      plane.position.y = -8;
+      scene.add(plane);
+    }
+
+    function addListners(camera, renderer, composer) {
+      document.addEventListener("keydown", e => {
+        const { x, y, z } = camera.position;
+        console.log(`camera.position.set(${x},${y},${z})`);
+        const { x: a, y: b, z: c } = camera.rotation;
+        console.log(`camera.rotation.set(${a},${b},${c})`);
+      });
+
+      window.addEventListener(
+        "resize",
+        () => {
+          const width = window.innerWidth;
+          const height = window.innerHeight;
+
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+
+          renderer.setSize(width, height);
+          composer.setSize(width, height);
+        },
+        false);
+
+    }
+  </script>
+
 </body>
+
 </html>
